@@ -284,7 +284,7 @@ img.img-responsive {
     margin: auto;
 }
 .mydetails , .myskills {
-	background-color: rgba(129, 224, 144, 0.14);
+	background-color: #FFFFFF;
 }
 .mydetails {
 	padding:6.3em 0;
@@ -328,7 +328,7 @@ img.img-responsive {
 	padding:2em 0;
 }
 .myskills h3 {
-	color:#000;
+	color:#A1B3A4;
 	padding:25px;
 	font-family: 'Cinzel', serif;
 	font-size:25px;
