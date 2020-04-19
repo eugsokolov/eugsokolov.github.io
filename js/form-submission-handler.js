@@ -12,6 +12,25 @@ function validateHuman(honeypot) {
   }
 }
 
+function postData(data, onCompletion) {
+  var url = 'https://script.google.com/macros/s/AKfycbzrkYN1RrZfcHPEoZduSRwFhdLny4stcXnoenTTPEhLVBSlqQZt/exec';
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', url);
+  // xhr.withCredentials = true;
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+      console.log(xhr.status, xhr.statusText)
+      console.log(xhr.responseText);
+      onCompletion()
+      return;
+  };
+  // url encode form data for sending as post data
+  var encoded = Object.keys(data).map(function(k) {
+      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+  }).join('&')
+  xhr.send(encoded);
+}
+
 // get all data in form and return object
 function getFormData() {
   var form = document.getElementById("gform");
@@ -62,34 +81,20 @@ function handleFormSubmit(event) {  // handles form submit withtout any jquery
   event.preventDefault();           // we are submitting via xhr below
   var data = getFormData();         // get the values submitted in the form
 
-  /* OPTION: Remove this comment to enable SPAM prevention, see README.md
   if (validateHuman(data.honeypot)) {  //if form is filled, form will not be submitted
     return false;
   }
-  */
 
   if (!validEmail(data.email) ) {   // if email is not valid show error
     document.getElementById('email-invalid-message').style.display = 'block';
     return false;
   } else {
-    var url = event.target.action;  //
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', url);
-    // xhr.withCredentials = true;
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
-        console.log( xhr.status, xhr.statusText )
-        console.log(xhr.responseText);
-        document.getElementById('email-invalid-message').style.display = 'none';
-        document.getElementById('gform').style.display = 'none'; // hide form
-        document.getElementById('thankyou_message').style.display = 'block';
-        return;
-    };
-    // url encode form data for sending as post data
-    var encoded = Object.keys(data).map(function(k) {
-        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&')
-    xhr.send(encoded);
+    function emailSent() {
+      document.getElementById('email-invalid-message').style.display = 'none';
+      document.getElementById('gform').style.display = 'none'; // hide form
+      document.getElementById('thankyou_message').style.display = 'block';
+    }
+    postData(data, emailSent)
   }
 }
 

@@ -5,31 +5,18 @@ function recordCoordinates(data) {
 
   data.formDataNameOrder = JSON.stringify(['lat', 'long']);
   data.formGoogleSheetName = "locations"; // default sheet name
-  data.formGoogleSendEmail = ""; // no email by default
 
-  var url = 'https://script.google.com/macros/s/AKfycbzrkYN1RrZfcHPEoZduSRwFhdLny4stcXnoenTTPEhLVBSlqQZt/exec';
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', url);
-  // xhr.withCredentials = true;
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.onreadystatechange = function() {
-      console.log('status', xhr.status, xhr.statusText )
-      console.log('response', xhr.responseText);
-      return;
-  };
-  // todo post fails
-  var encoded = Object.keys(data).map(function(k) {
-      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-  }).join('&')
-  xhr.send(encoded);
-
+  function something() {}
+  console.log(data)
+  postData(data, something)
 }
+
 function ipLookUp () {
   $.ajax('https://ipapi.co/json')
   .then(
       function success(response) {
           console.log('ip-api responses', response)
-          recordCoordinates({lat: response.latitude, long: response.longitude});
+          recordCoordinates({'lat': response.latitude, 'long': response.longitude});
       },
       function fail(data, status) {
           console.log('ipLookUp failed', status);

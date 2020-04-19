@@ -42,26 +42,26 @@ function sendEmail(data) {
 }
 
 function recordDataInSheet(data, sheetName) {
-    try {
-      var doc = SpreadsheetApp.openById('AKfycbzrkYN1RrZfcHPEoZduSRwFhdLny4stcXnoenTTPEhLVBSlqQZt')
-      var sheet = doc.getSheetByName(sheetName)
-      var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-      var nextRow = sheet.getLastRow() + 1;
-      var row = [new Date()];
-      for (var i = 0; i < headers.length; i++) {
-        if (headers[i].length > 0) {
-          row.push(data[headers[i]])
-        }
+  try {
+    var doc = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = doc.getSheetByName(sheetName);
+    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    var nextRow = sheet.getLastRow() + 1;
+    var row = [new Date()];
+    for (var i = 1; i < headers.length; i++) {
+      if (headers[i].length > 0) {
+        row.push(data[headers[i]]);
       }
-      sheet.getRange(nextRow, 1, 1, row.length).setValues([row])
     }
-    catch(error) {
-      Logger.log('error writing row to sheet', e); 
-    }
-    finally {
-      return;
-    }
+    sheet.getRange(nextRow, 1, 1, row.length).setValues([row]);
   }
+  catch(error) {
+    Logger.log('error writing row to sheet', e);
+  }
+  finally {
+    return;
+  }
+}
 
 function doPost(e) {
     Logger.log(e); // the Google Script version of console.log see: Class Logger
