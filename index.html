@@ -15,6 +15,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="css/cobox.css" rel="stylesheet" type="text/css">
 <link href="css/portfolio.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/map.css" rel="stylesheet" type="text/css">
 <!-- /css files -->
 <!-- font links -->
 <link href='//fonts.googleapis.com/css?family=Quicksand:400,700,300' rel='stylesheet' type='text/css'>
@@ -24,6 +25,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="js/modernizr.custom.js"></script>
 <script src="js/filer.js"></script>
 <script src="js/location.js"></script>
+<script src="js/map.js"></script>
 <!-- /js files -->
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="getLocation()">
@@ -234,6 +236,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 		</div>
+		<div id="map-container" class="map-container">
+			<div class="map-header">
+				Site Usage Map
+			</div>
+			<!--
+			<div id="floating-panel">
+				<button onclick="toggleHeatmap()">Toggle Heatmap</button>
+				<button onclick="changeGradient()">Change gradient</button>
+				<button onclick="changeRadius()">Change radius</button>
+				<button onclick="changeOpacity()">Change opacity</button>
+			  </div>
+			  -->
+			  <div id="map" class="map"></div>
+		</div>
 		<hr>
 		<div class="copyright">
 			<p class="text-center">© 2016 My Profile. All Rights Reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
@@ -315,5 +331,8 @@ $(document).ready(function(){
 	<!-- /js for sliding -->
 	<!-- /js files -->
 <script data-cfasync="false" src="js/form-submission-handler.js"></script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgo7rhVpjBfSfUasrSHDVouH_A4D3KQ48&libraries=visualization&callback=initMap">
+</script>
 </body>
 </html>	

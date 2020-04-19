@@ -1,0 +1,50 @@
+/* Always set the map height explicitly to define the size of the div
+* element that contains the map. */
+#map {
+	height: 100%;
+	width: 100%;
+}
+
+#floating-panel {
+	position: relative;
+	top: 10px;
+	left: 25%;
+	z-index: 5;
+	background-color: #fff;
+	padding: 5px;
+	border: 1px solid #999;
+	text-align: center;
+	font-family: 'Roboto','sans-serif';
+	line-height: 30px;
+	padding-left: 10px;
+}
+#floating-panel {
+	background-color: #fff;
+	border: 1px solid #999;
+	left: 25%;
+	padding: 5px;
+	height: fit-content;
+	top: 10px;
+	z-index: 5;
+}
+.map-container {
+	visibility: hidden;
+	height: 0px;
+    width: 90%;
+	display: flex;
+	flex-direction: column;
+    justify-content: center;
+    margin: 50px;
+}
+
+.map-header {
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 16px;
+	font-weight: 600
+}
+
+.map {
+	overflow: unset;
+}

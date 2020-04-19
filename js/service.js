@@ -72,3 +72,21 @@ function doPost(e) {
         sendEmail(data);
     }
 }
+
+function getCoordinates() {
+  try {
+    var doc = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = doc.getSheetByName('locations');
+    return sheet.getRange(2, 2, sheet.getLastRow() - 1, 2).getValues();
+  }
+  catch(error) {
+    Logger.log('error getting from sheet', error);
+    return;
+  }
+}
+
+function doGet(e) {
+  return ContentService.createTextOutput(
+    JSON.stringify(getCoordinates())
+  ).setMimeType(ContentService.MimeType.JSON);
+}
