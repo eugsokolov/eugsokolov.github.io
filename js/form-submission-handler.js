@@ -1,4 +1,3 @@
-
 function validEmail(email) { // see:
   var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
   return re.test(email);
@@ -69,8 +68,8 @@ function handleFormSubmit(event) {  // handles form submit withtout any jquery
   }
   */
 
-  if( !validEmail(data.email) ) {   // if email is not valid show error
-    document.getElementById('email-invalid').style.display = 'block';
+  if (!validEmail(data.email) ) {   // if email is not valid show error
+    document.getElementById('email-invalid-message').style.display = 'block';
     return false;
   } else {
     var url = event.target.action;  //
@@ -81,6 +80,7 @@ function handleFormSubmit(event) {  // handles form submit withtout any jquery
     xhr.onreadystatechange = function() {
         console.log( xhr.status, xhr.statusText )
         console.log(xhr.responseText);
+        document.getElementById('email-invalid-message').style.display = 'none';
         document.getElementById('gform').style.display = 'none'; // hide form
         document.getElementById('thankyou_message').style.display = 'block';
         return;
@@ -92,6 +92,7 @@ function handleFormSubmit(event) {  // handles form submit withtout any jquery
     xhr.send(encoded);
   }
 }
+
 function loaded() {
   console.log('contact form submission handler loaded successfully');
   // bind to the submit event of our form

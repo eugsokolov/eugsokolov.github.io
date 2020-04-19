@@ -38,6 +38,10 @@ ul{
 label{
 	margin:0;
 }
+.email-invalid {
+	display: none;
+	color: red;
+}
 button{
 	transition:0.5s all;
 	-webkit-transition:0.5s all;

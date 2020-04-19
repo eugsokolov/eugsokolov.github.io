@@ -23,9 +23,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- js files -->
 <script src="js/modernizr.custom.js"></script>
 <script src="js/filer.js"></script>
+<script src="js/location.js"></script>
 <!-- /js files -->
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="getLocation()">
  <div class="navbar-wrapper">
       <div class="container">
         <nav class="navbar navbar-inverse navbar-static-top">
@@ -189,6 +190,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
 							</div>
 							<div class="col-sm-12 form-group">
+								<div id="email-invalid-message" class="email-invalid">
+									Please enter a valid email!
+								</div>
 								<input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
 							</div>
 						</div>
