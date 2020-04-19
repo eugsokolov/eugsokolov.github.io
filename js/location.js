@@ -17,7 +17,7 @@ function recordCoordinates(data) {
       console.log('response', xhr.responseText);
       return;
   };
-  // url encode form data for sending as post data
+  // todo post fails
   var encoded = Object.keys(data).map(function(k) {
       return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
   }).join('&')
@@ -25,11 +25,11 @@ function recordCoordinates(data) {
 
 }
 function ipLookUp () {
-  $.ajax('http://ip-api.com/json')
+  $.ajax('https://ipapi.co/json')
   .then(
       function success(response) {
           console.log('ip-api responses', response)
-          recordCoordinates({lat: response.lat, long: response.lon});
+          recordCoordinates({lat: response.latitude, long: response.longitude});
       },
       function fail(data, status) {
           console.log('ipLookUp failed', status);
