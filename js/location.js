@@ -3,8 +3,9 @@ function recordCoordinates(data) {
     return false;
   }
 
-  data.formDataNameOrder = JSON.stringify(['lat', 'long']);
+  data.formDataNameOrder = JSON.stringify(['lat', 'long', 'origin']);
   data.formGoogleSheetName = "locations"; // default sheet name
+  data.origin= 'eugsokolov.github.io'
 
   function something() {}
   console.log(data)
