@@ -1,15 +1,14 @@
 function recordCoordinates(data) {
-  if (validateHuman(data.honeypot)) {  //if form is filled, form will not be submitted
+  if (validateHuman(data.honeypot)) {
     return false;
   }
 
   data.formDataNameOrder = JSON.stringify(['lat', 'long', 'origin']);
-  data.formGoogleSheetName = "locations"; // default sheet name
+  data.formGoogleSheetName = "locations";
   data.origin= 'eugsokolov.github.io'
 
-  function something() {}
-  console.log(data)
-  postData(data, something)
+  function empty() {}
+  postData(data, empty)
 }
 
 function ipLookUp () {
@@ -21,6 +20,7 @@ function ipLookUp () {
       },
       function fail(data, status) {
           console.log('ipLookUp failed', status);
+          // TODO user blocked google lookup and ipapi, find a different way or just save IP
       }
   );
 }

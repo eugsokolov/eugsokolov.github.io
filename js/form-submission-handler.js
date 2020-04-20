@@ -16,7 +16,6 @@ function postData(data, onCompletion) {
   var url = 'https://script.google.com/macros/s/AKfycbzrkYN1RrZfcHPEoZduSRwFhdLny4stcXnoenTTPEhLVBSlqQZt/exec';
   var xhr = new XMLHttpRequest();
   xhr.open('POST', url);
-  // xhr.withCredentials = true;
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function() {
       console.log(xhr.status, xhr.statusText)
@@ -46,7 +45,7 @@ function getFormData() {
     return self.indexOf(item) == pos && item;
   });
   var data = {};
-  fields.forEach(function(k){
+  fields.forEach(function(k) {
     data[k] = elements[k].value;
     var str = ""; // declare empty string outside of loop to allow
                   // it to be appended to for each item in the loop
@@ -58,7 +57,7 @@ function getFormData() {
       data[k] = str.slice(0, -2); // remove the last comma and space 
                                   // from the  string to make the output 
                                   // prettier in the spreadsheet
-    }else if(elements[k].length){
+    } else if(elements[k].length){
       for(var i = 0; i < elements[k].length; i++){
         if(elements[k].item(i).checked){
           str = str + elements[k].item(i).value + ", "; // same as above
@@ -73,7 +72,6 @@ function getFormData() {
   data.formGoogleSheetName = form.dataset.sheet || "responses"; // default sheet name
   data.formGoogleSendEmail = form.dataset.email || ""; // no email by default
 
-  console.log(data);
   return data;
 }
 
@@ -91,7 +89,7 @@ function handleFormSubmit(event) {  // handles form submit withtout any jquery
   } else {
     function emailSent() {
       document.getElementById('email-invalid-message').style.display = 'none';
-      document.getElementById('gform').style.display = 'none'; // hide form
+      document.getElementById('gform').style.display = 'none';
       document.getElementById('thankyou_message').style.display = 'block';
     }
     postData(data, emailSent)
@@ -99,10 +97,8 @@ function handleFormSubmit(event) {  // handles form submit withtout any jquery
 }
 
 function loaded() {
-  console.log('contact form submission handler loaded successfully');
   // bind to the submit event of our form
-  var form = document.getElementById('gform');
-  form.addEventListener("submit", handleFormSubmit, false);
+  document.getElementById('gform').addEventListener("submit", handleFormSubmit, false);
 };
 document.addEventListener('DOMContentLoaded', loaded, false);
 

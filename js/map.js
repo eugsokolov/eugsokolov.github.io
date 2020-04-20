@@ -1,17 +1,3 @@
-function getCoordinatesForMap() {
-  $.ajax('https://script.google.com/macros/s/AKfycbzrkYN1RrZfcHPEoZduSRwFhdLny4stcXnoenTTPEhLVBSlqQZt/exec')
-  .then(
-      function success(points) {
-        console.log(points)
-        return points
-      },
-      function fail(data, status) {
-          console.log('coordinates get failed', data, status);
-          return []
-      }
-  );
-}
-
 function hideMap() {
   document.getElementById('map-container').style.visibility = 'hidden';
   document.getElementById('map-container').style.height = '0px';
