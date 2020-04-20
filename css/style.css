@@ -236,7 +236,14 @@ body {
 	margin: 0;
 }
 .social-icons {
-    margin: 2% auto 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    margin: 0 auto 0;
+}
+.row-spread {
+	display: flex;
+	flex-direction: row;
 }
 .social-icons  a span {
 	display:inline-block;
@@ -327,9 +334,6 @@ img.img-responsive {
 }
 .mydetails .social-icons span.googleplus {
 	background-position:-120px 0px;
-}
-.myskills {
-	padding:2em 0;
 }
 .myskills h3 {
 	color:#A1B3A4;
