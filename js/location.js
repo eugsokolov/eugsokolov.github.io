@@ -21,7 +21,8 @@ function ipLookUp () {
       },
       function fail(data, status) {
           console.log('ipLookUp failed', status);
-          // TODO user blocked google lookup and ipapi, find a different way or just save IP
+          // TODO user blocked google lookup and ipapi, find a different way or just save IP?
+          // TODO ask user to unblock so they can see their dot!
       }
   );
 }
