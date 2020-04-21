@@ -10,12 +10,8 @@ function showMap() {
 
 var map, heatmap;
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 2,
-    center: {lat: 22.404, lng: -3.584},
-    mapTypeId: 'roadmap'
-  });
+function loadMap() {
+  console.log('loadMap')
   $.ajax('https://script.google.com/macros/s/AKfycbzrkYN1RrZfcHPEoZduSRwFhdLny4stcXnoenTTPEhLVBSlqQZt/exec')
   .then(
       function success(points) {
@@ -30,6 +26,15 @@ function initMap() {
           hideMap();
       }
   );
+}
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 2,
+    center: {lat: 22.404, lng: -3.584},
+    mapTypeId: 'roadmap'
+  });
+  loadMap()
 }
 
 function toggleHeatmap() {

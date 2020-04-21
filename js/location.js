@@ -9,6 +9,7 @@ function recordCoordinates(data) {
 
   function empty() {}
   postData(data, empty)
+  loadMap()
 }
 
 function ipLookUp () {
