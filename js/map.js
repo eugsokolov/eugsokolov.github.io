@@ -11,7 +11,7 @@ function showMap() {
 var map, heatmap;
 
 function loadMap() {
-  $.ajax('https://script.google.com/macros/s/AKfycbzrkYN1RrZfcHPEoZduSRwFhdLny4stcXnoenTTPEhLVBSlqQZt/exec')
+  $.ajax('https://script.google.com/macros/s/AKfycbxcbZrM6Lr8-Wep8T0ynwcDQMIAdtZkmfA2voRbbINk_zvNXvW-8U9Kaw/exec')
   .then(
       function success(points) {
         heatmap = new google.maps.visualization.HeatmapLayer({
