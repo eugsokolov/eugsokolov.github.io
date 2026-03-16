@@ -261,37 +261,7 @@
     <p class="footer-note">Submissions are sent to <strong>eugsokolov@gmail.com</strong></p>
   </div>
 
-  <script>
-    const form = document.getElementById('complaintForm');
-    const btn  = document.getElementById('submitBtn');
-    const successMsg = document.getElementById('successMsg');
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const name      = document.getElementById('name').value.trim();
-      const fromEmail = document.getElementById('email').value.trim();
-      const complaint = document.getElementById('complaint').value.trim();
-
-      // Build mailto link
-      const to      = 'eugsokolov@gmail.com';
-      const subject = encodeURIComponent(`Complaint from ${name}`);
-      const body    = encodeURIComponent(
-        `Name: ${name}\nEmail: ${fromEmail}\n\nComplaint:\n${complaint}`
-      );
-
-      // Open email client
-      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-
-      // Show success state
-      btn.disabled = true;
-      setTimeout(() => {
-        form.style.display = 'none';
-        successMsg.style.display = 'block';
-      }, 400);
-    });
-  </script>
-
+<script data-cfasync="false" src="js/form-submission-handler.js"></script>
 </body>
 </html>
 
