@@ -75,6 +75,12 @@ function getFormData() {
   return data;
 }
 
+function emailSentCallback() {
+  document.getElementById('email-invalid-message').style.display = 'none';
+  document.getElementById('gform').style.display = 'none';
+  document.getElementById('thankyou_message').style.display = 'block';
+}
+
 function handleFormSubmit(event) {  // handles form submit withtout any jquery
   event.preventDefault();           // we are submitting via xhr below
   var data = getFormData();         // get the values submitted in the form
@@ -87,12 +93,8 @@ function handleFormSubmit(event) {  // handles form submit withtout any jquery
     document.getElementById('email-invalid-message').style.display = 'block';
     return false;
   } else {
-    function emailSent() {
-      document.getElementById('email-invalid-message').style.display = 'none';
-      document.getElementById('gform').style.display = 'none';
-      document.getElementById('thankyou_message').style.display = 'block';
-    }
-    postData(data, emailSent)
+    document.getElementById('email-invalid-message').style.display = 'none';
+    postData(data, emailSentCallback);
   }
 }
 
@@ -101,4 +103,3 @@ function loaded() {
   document.getElementById('gform').addEventListener("submit", handleFormSubmit, false);
 };
 document.addEventListener('DOMContentLoaded', loaded, false);
-

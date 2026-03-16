@@ -49,6 +49,11 @@
       background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%);
     }
 
+    .email-invalid {
+      display: none;
+      color: red;
+    }
+
     .card {
       position: relative;
       z-index: 1;
@@ -235,10 +240,12 @@
       </div>
 
       <div class="field">
+        <div id="email-invalid-message" class="email-invalid">
+          Please enter a valid email!
+        </div>
         <label for="email">Email Address</label>
         <input type="email" id="email" name="email" placeholder="user@example.com" required />
       </div>
-
       <div class="field">
         <label for="comments">Your Complaint</label>
         <textarea id="comments" name="comments" placeholder="Describe your complaint in detail…" required></textarea>
@@ -250,7 +257,7 @@
       </button>
     </form>
 
-    <div class="success-msg" id="thankyou_message">
+    <div style="display:none;" id="thankyou_message">
       <div class="check">
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#2e7d32" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
       </div>
